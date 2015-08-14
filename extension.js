@@ -58,7 +58,8 @@ Array.prototype.find = function(findKey, findValue) {
 	};
 };
 Array.prototype.nestwalk = function(callback, childName, layer) {
-  var l = layer || 0;
+  var l = layer || 0,
+  		childName = childName || 'children';
 
 	for(var i=0 ; i < this.length ; i++ )
 	{
