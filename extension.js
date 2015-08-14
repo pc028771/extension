@@ -57,16 +57,16 @@ Array.prototype.find = function(findKey, findValue) {
 	  	return this[i];
 	};
 };
-Array.prototype.nestwalk = function(callback, childName, layer) {
+Array.prototype.nestwalk = function(callback, childName, layer, parent) {
   var l = layer || 0,
   		childName = childName || 'children';
 
 	for(var i=0 ; i < this.length ; i++ )
 	{
 		if( callback instanceof Function )
-			callback(this[i], i, l);
+			callback(this[i], i, l, parent);
 
 		if( childName && this[i][childName] instanceof Array )
-			this[i][childName].nestwalk(callback, childName, l + 1);
+			this[i][childName].nestwalk(callback, childName, l + 1, this[i]);
 	}
 };
